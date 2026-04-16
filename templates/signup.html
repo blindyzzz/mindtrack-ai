@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindTrack AI | Sign Up</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body class="auth-body">
+    <main class="auth-shell">
+      <section class="auth-card">
+        <p class="eyebrow">MindTrack AI</p>
+        <h1>{title}</h1>
+        <p class="intro">Track your mood, reflect on your day, and get gentle support during busy student life.</p>
+        {error}
+        <form method="post" action="/signup" class="auth-form">
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" minlength="6" required />
+          </label>
+          <button type="submit">Create account</button>
+        </form>
+        <p class="switch-link">Already have an account? <a href="/login">Log in</a></p>
+        <p class="disclaimer">This app does not provide medical or psychological advice. It is for general support only.</p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindTrack AI | Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">MindTrack AI</p>
+        <h1>Your wellness dashboard</h1>
+      </div>
+      <div class="topbar-meta">
+        <p>{email}</p>
+        <p>{today}</p>
+        <a href="/logout" class="ghost-link">Log out</a>
+      </div>
+    </header>
+
+    <main class="dashboard-grid">
+      <section class="panel hero-panel">
+        <div>
+          <p class="panel-kicker">Daily Check-In</p>
+          <h2>How are you feeling today?</h2>
+          <p class="support-copy">Keep it simple. A quick check-in can help you notice patterns and choose a gentler next step.</p>
+          <p class="status-label">Chat mode</p>
+          <p class="status-banner status-{openai_status_class}">{openai_status_text}</p>
+        </div>
+        <form method="post" action="/mood" class="mood-form">
+          <div class="mood-options">
+            <label class="mood-option mood-happy">
+              <input type="radio" name="mood" value="happy" {selected_happy} required />
+              <span>Happy</span>
+            </label>
+            <label class="mood-option mood-neutral">
+              <input type="radio" name="mood" value="neutral" {selected_neutral} />
+              <span>Neutral</span>
+            </label>
+            <label class="mood-option mood-stressed">
+              <input type="radio" name="mood" value="stressed" {selected_stressed} />
+              <span>Stressed</span>
+            </label>
+            <label class="mood-option mood-sad">
+              <input type="radio" name="mood" value="sad" {selected_sad} />
+              <span>Sad</span>
+            </label>
+          </div>
+          <label>
+            Optional note
+            <textarea name="note" rows="3" placeholder="What’s been on your mind today?"></textarea>
+          </label>
+          <button type="submit">Save today’s mood</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <p class="panel-kicker">Suggestions</p>
+        <h2>Small support for today</h2>
+        <ul class="suggestion-list">
+          {suggestions}
+        </ul>
+      </section>
+
+      <section class="panel">
+        <p class="panel-kicker">Mood History</p>
+        <h2>Your recent check-ins</h2>
+        <ul class="history-list">
+          {mood_history}
+        </ul>
+      </section>
+
+      <section class="panel">
+        <p class="panel-kicker">Mood Trends</p>
+        <h2>Weekly snapshot</h2>
+        <div class="chart">
+          {mood_chart}
+        </div>
+      </section>
+
+      <section class="panel chat-panel">
+        <p class="panel-kicker">AI Support</p>
+        <h2>Talk to MindTrack AI</h2>
+        <p class="support-copy">Short, supportive responses for stress, exams, and daily pressure. Not medical advice.</p>
+        <form method="post" action="/chat" class="chat-form">
+          <textarea name="message" rows="3" placeholder="I’m overwhelmed about exams and don’t know where to start." required></textarea>
+          <button type="submit">Send message</button>
+        </form>
+        <div class="chat-log">
+          {chat_messages}
+        </div>
+      </section>
+
+      <aside class="panel reminder-panel">
+        <p class="panel-kicker">Reminder</p>
+        <h2>Daily nudge</h2>
+        <p class="support-copy">A gentle reminder helps build consistency. Browser notifications can be added later if you want this expanded.</p>
+        <div class="notification-card">
+          <strong>Suggested reminder</strong>
+          <p>Check in once each evening after classes or study time.</p>
+        </div>
+        <p class="disclaimer strong-disclaimer">This app does not provide medical or psychological advice. It is for general support only.</p>
+      </aside>
+    </main>
+  </body>
+</html>
