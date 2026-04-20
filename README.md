@@ -80,14 +80,24 @@ This application does not provide medical or psychological advice. It is intende
 ### Dashboard & Daily Check-in
 <img src="dashboard.png" width="800"/>
 
+Users can quickly log their daily mood and reflect with a short note, helping them build self-awareness and recognize emotional patterns over time.
+
 ### Mood Tracking & History
 <img src="mood-history.png" width="800"/>
+
+A structured view of past entries allows users to track their emotional trends and better understand how their feelings evolve day by day.
 
 ### Weekly Insights
 <img src="weekly-snapshot.png" width="800"/>
 
+Weekly insights summarize mood trends, helping users identify patterns and make more informed decisions about their habits and routines.
+
 ### AI Support Chat
 <img src="ai-chat.png" width="800"/>
 
+An AI-powered assistant provides supportive, real-time responses to help users manage stress, reflect on their thoughts, and stay motivated.
+
 ### Smart Reminders & Disclaimer
 <img src="reminder.png" width="800"/>
+
+Gentle reminders encourage consistent usage, while clear disclaimers ensure the app is positioned as supportive guidance rather than medical advice.
