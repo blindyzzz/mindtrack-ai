@@ -1,68 +1,93 @@
 # MindTrack AI
 
-MindTrack AI is a lightweight student mental wellness web app built with Python's standard library and SQLite.
+MindTrack AI is a web application designed to support student mental wellness through mood tracking, reflection, and AI-powered conversations.
+
+## Overview
+
+The application helps users better understand their emotional state, track mood patterns over time, and receive simple, supportive guidance through an AI assistant. It focuses on accessibility, simplicity, and everyday usability for students dealing with stress and academic pressure.
 
 ## Features
 
-- Email/password sign up and login
+- User authentication (email & password)
 - Personal dashboard for each user
-- Daily mood check-in with optional notes
-- Mood history and a simple visual trend view
-- Mood-based daily suggestions
-- AI support chat backed by Gemini when `GEMINI_API_KEY` is set
-- Free built-in fallback support mode when Gemini is not configured
-- Visible non-medical disclaimer throughout the app
+- Daily mood check-ins with optional notes
+- Mood history tracking
+- Simple mood-based suggestions
+- AI chat assistant for emotional support
+- Clear disclaimer (not medical advice)
+- Responsive and calming user interface
 
-## Run locally
+## Tech Stack
 
-```bash
-python3 app.py
-```
+- Python (standard library HTTP server)
+- SQLite database
+- HTML + CSS (custom templates)
+- Gemini API (AI chat integration)
+- Deployment: Render
+- Version control: GitHub
 
-Then open `http://127.0.0.1:8000`.
+## AI Integration
 
-## Gemini setup
+The AI functionality evolved through experimentation with multiple approaches, including OpenAI and local models (Ollama), before integrating the Gemini API for public deployment.
 
-Create an API key in Google AI Studio, then set it before starting the app:
+The chat system includes:
+- Retry logic for failed requests
+- Fallback model support  
+- Handling of incomplete or cut-off responses  
 
-```bash
-export GEMINI_API_KEY="your_key_here"
-export GEMINI_MODEL="gemini-2.5-flash"
-export GEMINI_FALLBACK_MODEL="gemini-2.5-flash-lite"
-python3 app.py
-```
+Current configuration:
+- Primary model: `gemini-2.5-flash`
+- Fallback model: `gemini-2.5-flash-lite`
 
-If no API key is set, the chat uses a safe built-in fallback support response.
+## Development Challenges
 
-You can copy settings from [.env.example](/Users/amiromorov/Documents/New%20project/.env.example) and follow the fuller deployment notes in [DEPLOY.md](/Users/amiromorov/Documents/New%20project/DEPLOY.md).
+During development, several technical challenges were addressed:
 
-## Make It Public With Render
+- Implementing a working authentication system
+- Stabilizing AI responses from external APIs
+- Handling incomplete or inconsistent AI outputs
+- Managing API reliability with retry and fallback logic
+- Configuring deployment and environment variables on Render
 
-This repo includes [render.yaml](/Users/amiromorov/Documents/New%20project/render.yaml) for a simple public deploy.
+## Limitations
 
-1. Push this project to GitHub.
-2. Create a new Web Service on [Render](https://render.com).
-3. Connect your GitHub repo.
-4. Add environment variables:
+The current version functions as a public demo.
 
-```bash
-GEMINI_API_KEY=your_key_here
-GEMINI_MODEL=gemini-2.5-flash
-GEMINI_FALLBACK_MODEL=gemini-2.5-flash-lite
-```
+- The app uses SQLite on free hosting (Render)
+- Data persistence is not fully reliable
+- Users may experience session resets or data loss after restarts or redeployments
 
-5. Deploy.
+A production-ready version would involve migrating to a more robust database such as PostgreSQL.
 
-Render gives the app a public `onrender.com` URL. Note that SQLite is ephemeral on free web services, so this is best for demos and prototypes. For persistent public user data, move the database to Postgres.
+## Live Demo
 
-## Data model
+https://mindtrack-ai-4gqv.onrender.com
 
-- `users`: email, password hash, created timestamp
-- `sessions`: cookie session tokens
-- `mood_entries`: date, mood, optional note
-- `chat_messages`: user message, AI response, timestamp
+## Repository
 
-## Notes
+https://github.com/blindyzzz/mindtrack-ai
 
-- The app stores data in `mindtrack.db`.
-- Browser notifications are presented as a lightweight optional reminder section rather than a full scheduler.
+## Purpose
+
+This project explores how AI can be used to build practical, user-focused tools that address real-world problems. It combines elements of software development, user experience design, and social impact.
+
+## Disclaimer
+
+This application does not provide medical or psychological advice. It is intended for general emotional support only.
+
+## Screenshots
+
+### Dashboard
+![Dashboard](dashboard.png)
+
+### Mood History
+![Mood History](mood-history.png)
+
+### Weekly Snapshot
+![Weekly](weekly-snapshot.png)
+
+### AI Chat
+![Chat](ai-chat.png)
+
+### Reminder & Disclaimer
+![Reminder](reminder.png)
