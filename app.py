@@ -43,6 +43,7 @@ AI_RUNTIME_STATUS = {
     "state": "local",
     "message": "Free local support mode: using built-in supportive responses.",
 }
+COMPLETE_SENTENCE_ENDINGS = (".", "!", "?", "\"", "'")
 
 
 def hash_password(password, salt=None):
@@ -246,6 +247,15 @@ def local_support_reply(message):
     )
 
 
+def looks_incomplete_reply(reply):
+    if not reply:
+        return True
+    stripped = reply.strip()
+    if len(stripped) < 12:
+        return True
+    return not stripped.endswith(COMPLETE_SENTENCE_ENDINGS)
+
+
 def gemini_request(model, message, api_key):
     payload = {
         "system_instruction": {
@@ -255,6 +265,7 @@ def gemini_request(model, message, api_key):
                         """
                         You are MindTrack AI, a supportive emotional wellness assistant for students ages 15-22.
                         Be warm, non-judgmental, and practical. Keep replies short: 2-4 sentences.
+                        Always finish with a complete final sentence.
                         Offer emotional support and simple coping ideas only.
                         Do not present medical, psychological, crisis, or diagnostic advice.
                         If a user sounds in immediate danger, encourage contacting local emergency services or a trusted person right away.
@@ -272,7 +283,7 @@ def gemini_request(model, message, api_key):
         ],
         "generationConfig": {
             "temperature": 0.8,
-            "maxOutputTokens": 180,
+            "maxOutputTokens": 260,
         },
     }
     req = request.Request(
@@ -321,7 +332,7 @@ def gemini_support_reply(message):
         return None
 
     primary_model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
-    fallback_model = os.environ.get("GEMINI_FALLBACK_MODEL", "gemini-1.5-flash")
+    fallback_model = os.environ.get("GEMINI_FALLBACK_MODEL", "gemini-2.5-flash-lite")
     models_to_try = [primary_model]
     if fallback_model and fallback_model != primary_model:
         models_to_try.append(fallback_model)
@@ -332,6 +343,9 @@ def gemini_support_reply(message):
         for attempt in range(attempts):
             result = gemini_request(model, message, api_key)
             if result["reply"]:
+                if looks_incomplete_reply(result["reply"]) and attempt < attempts - 1:
+                    time.sleep(0.8)
+                    continue
                 AI_RUNTIME_STATUS["state"] = "connected"
                 suffix = " after retry" if attempt > 0 else ""
                 AI_RUNTIME_STATUS["message"] = f"Gemini mode: connected with {model}{suffix}."

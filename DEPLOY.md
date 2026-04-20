@@ -9,6 +9,7 @@
 cd "/Users/amiromorov/Documents/New project"
 export GEMINI_API_KEY="your_key_here"
 export GEMINI_MODEL="gemini-2.5-flash"
+export GEMINI_FALLBACK_MODEL="gemini-2.5-flash-lite"
 python3 app.py
 ```
 
@@ -28,6 +29,7 @@ If `GEMINI_API_KEY` is not set when the server starts, the app will use built-in
 ```text
 GEMINI_API_KEY=your_key_here
 GEMINI_MODEL=gemini-2.5-flash
+GEMINI_FALLBACK_MODEL=gemini-2.5-flash-lite
 ```
 
 7. Deploy and share the generated `onrender.com` URL.

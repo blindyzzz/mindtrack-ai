@@ -28,6 +28,7 @@ Create an API key in Google AI Studio, then set it before starting the app:
 ```bash
 export GEMINI_API_KEY="your_key_here"
 export GEMINI_MODEL="gemini-2.5-flash"
+export GEMINI_FALLBACK_MODEL="gemini-2.5-flash-lite"
 python3 app.py
 ```
 
@@ -47,7 +48,7 @@ This repo includes [render.yaml](/Users/amiromorov/Documents/New%20project/rende
 ```bash
 GEMINI_API_KEY=your_key_here
 GEMINI_MODEL=gemini-2.5-flash
-GEMINI_FALLBACK_MODEL=gemini-1.5-flash
+GEMINI_FALLBACK_MODEL=gemini-2.5-flash-lite
 ```
 
 5. Deploy.
