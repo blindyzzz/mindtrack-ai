@@ -77,17 +77,17 @@ This application does not provide medical or psychological advice. It is intende
 
 ## Screenshots
 
-### Dashboard
+### Dashboard & Daily Check-in
 <img src="dashboard.png" width="800"/>
 
-### Mood History
+### Mood Tracking & History
 <img src="mood-history.png" width="800"/>
 
-### Weekly Snapshot
+### Weekly Insights
 <img src="weekly-snapshot.png" width="800"/>
 
-### AI Chat
+### AI Support Chat
 <img src="ai-chat.png" width="800"/>
 
-### Reminder & Disclaimer
+### Smart Reminders & Disclaimer
 <img src="reminder.png" width="800"/>
