@@ -77,8 +77,6 @@ This application does not provide medical or psychological advice. It is intende
 
 ## Screenshots
 
-## Screenshots
-
 ### Dashboard
 <img src="dashboard.png" width="800"/>
 
