@@ -85,12 +85,12 @@ Users can quickly log their daily mood and reflect with a short note, helping th
 ### Mood Tracking & History
 <img src="mood-history.png" width="800"/>
 
-A structured view of past entries allows users to track their emotional trends and better understand how their feelings evolve day by day.
+A structured view of past entries allows users to track emotional trends and better understand how their feelings change over time.
 
 ### Weekly Insights
 <img src="weekly-snapshot.png" width="800"/>
 
-Weekly insights summarize mood trends, helping users identify patterns and make more informed decisions about their habits and routines.
+Weekly insights summarize mood trends, enabling users to identify patterns and make more informed decisions about their habits and routines.
 
 ### AI Support Chat
 <img src="ai-chat.png" width="800"/>
